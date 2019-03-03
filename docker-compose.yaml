@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  frontendapp:
+    image: kunalsumbly/frontendapp:1.0
+    ports:
+      - "80:4567"
+    environment:
+      - mongo_service_host=backendapp
+      - mongo_service_port=27017
+    depends_on:
+      - backendapp
+  backendapp:
+    image: learnandhire/backend
+    ports:
+      - "27017:27017"
